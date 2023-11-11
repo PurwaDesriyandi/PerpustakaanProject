@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  * 
  */
 public class AplikasiPerpustakaan {
-    public SettingUI config = new SettingUI (null, true);
+    public SettingUI config = new SettingUI(null, true);
     private String PROP_FILE="config.ini";
     private Properties p2;
     public Home Start = new Home();
