@@ -66,9 +66,7 @@ public class TambahUser extends javax.swing.JDialog {
     public void SetEditMati(){
        txtIdUser.setEnabled(false); 
        txtUser.setEnabled(false);
-       txtPass.setEnabled(false);
-       cbHak.setEnabled(false);
-       txtSts.setEnabled(false); 
+       txtPass.setEnabled(false); 
     }
     //
     //edit hidup
