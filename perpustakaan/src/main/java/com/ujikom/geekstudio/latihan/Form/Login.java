@@ -13,7 +13,7 @@ import javax.swing.table.*;
 import java.sql.SQLException;
 /**
  *
- * @author Yasin Dwi Ramandhita
+ * 
  */
 public class Login extends javax.swing.JFrame {
     Connection koneksi;

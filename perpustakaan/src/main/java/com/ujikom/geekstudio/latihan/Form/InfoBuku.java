@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author Yasin Dwi Ramandhita
+ * 
  */
 public class InfoBuku extends javax.swing.JDialog {
     Connection koneksi;
@@ -64,22 +64,22 @@ public class InfoBuku extends javax.swing.JDialog {
     //
     //tampilData
     public void tampildata(){
-        DefaultTableModel yasin = new DefaultTableModel();
-        yasin.addColumn("Kode Buku");
-        yasin.addColumn("Kode Kategori");
-        yasin.addColumn("Kode Penerbit");
-        yasin.addColumn("Kode Pengarang");
-        yasin.addColumn("Judul Buku");
-        yasin.addColumn("Sinopsis");
-        yasin.addColumn("Jumlah Buku");
-        yasin.addColumn("Gambar Buku");
+        DefaultTableModel perpus = new DefaultTableModel();
+        perpus.addColumn("Kode Buku");
+        perpus.addColumn("Kode Kategori");
+        perpus.addColumn("Kode Penerbit");
+        perpus.addColumn("Kode Pengarang");
+        perpus.addColumn("Judul Buku");
+        perpus.addColumn("Sinopsis");
+        perpus.addColumn("Jumlah Buku");
+        perpus.addColumn("Gambar Buku");
         
         try {
             stm = koneksi.createStatement();
             String sql ="SELECT * FROM tr_buku";
             rss = stm.executeQuery(sql);
             while (rss.next()){
-                yasin.addRow(new Object[]{
+                perpus.addRow(new Object[]{
                     rss.getString(1),
                     rss.getString(2),
                     rss.getString(3),
@@ -89,7 +89,7 @@ public class InfoBuku extends javax.swing.JDialog {
                     rss.getString(7),
                     rss.getString(8),});
             }
-            tabelInfoBuku.setModel(yasin);
+            tabelInfoBuku.setModel(perpus);
         } catch (SQLException e) {
            JOptionPane.showMessageDialog(this,e);
            

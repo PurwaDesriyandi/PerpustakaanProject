@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 /**
  *
- * @author Yasin Dwi Ramandhita
+ * 
  */
 public class DaftarPengguna extends javax.swing.JDialog {
     private Integer row;

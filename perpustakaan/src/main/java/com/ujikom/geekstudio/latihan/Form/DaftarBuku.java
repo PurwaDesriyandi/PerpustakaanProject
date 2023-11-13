@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author Yasin Dwi Ramandhita
+ * 
  */
 public class DaftarBuku extends javax.swing.JDialog {
     Connection koneksi;
@@ -177,22 +177,22 @@ public class DaftarBuku extends javax.swing.JDialog {
     //
     //tampilData
     public void tampildata(){
-        DefaultTableModel yasin = new DefaultTableModel();
-        yasin.addColumn("Kode Buku");
-        yasin.addColumn("Judul Buku");
-        yasin.addColumn("Jumlah Buku");
+        DefaultTableModel perpus = new DefaultTableModel();
+        perpus.addColumn("Kode Buku");
+        perpus.addColumn("Judul Buku");
+        perpus.addColumn("Jumlah Buku");
         try {
             stm = koneksi.createStatement();
             String sql ="SELECT kdBuku, judulBuku, jmlBuku FROM tr_buku";
             rss = stm.executeQuery(sql);
             while (rss.next()){
-                yasin.addRow(new Object[]{
+                perpus.addRow(new Object[]{
                     rss.getString(1),
                     rss.getString(2),
                     rss.getString(3),
                     });
             }
-            tabelDaftarBuku.setModel(yasin);
+            tabelDaftarBuku.setModel(perpus);
         } catch (SQLException e) {
            JOptionPane.showMessageDialog(this,e);
            

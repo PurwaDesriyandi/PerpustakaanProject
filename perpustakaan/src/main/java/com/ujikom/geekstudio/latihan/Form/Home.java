@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 /**
  *
- * @author Yasin Dwi Ramandhita
+ * 
  */
 public class Home extends javax.swing.JFrame {
     Connection koneksi;

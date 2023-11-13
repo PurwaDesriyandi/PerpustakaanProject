@@ -18,7 +18,7 @@ import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author Yasin Dwi Ramandhita
+ * 
  */
 public class Peminjaman extends javax.swing.JDialog {
     Connection koneksi;
@@ -145,22 +145,22 @@ public class Peminjaman extends javax.swing.JDialog {
     //
     //tampil data
     public void tampildata(){
-        DefaultTableModel yasin = new DefaultTableModel();
-        yasin.addColumn("Kode Pinjam");
-        yasin.addColumn("Tanggal Pinjam");
-        yasin.addColumn("Kode Anggota");
-        yasin.addColumn("Kode Buku");
-        yasin.addColumn("Tanggal Kembali");
-        yasin.addColumn("Status");
-        yasin.addColumn("User ID");
-        yasin.addColumn("Jumlah Buku");
+        DefaultTableModel perpus = new DefaultTableModel();
+        perpus.addColumn("Kode Pinjam");
+        perpus.addColumn("Tanggal Pinjam");
+        perpus.addColumn("Kode Anggota");
+        perpus.addColumn("Kode Buku");
+        perpus.addColumn("Tanggal Kembali");
+        perpus.addColumn("Status");
+        perpus.addColumn("User ID");
+        perpus.addColumn("Jumlah Buku");
         
         try {
             stm = koneksi.createStatement();
             String sql = "select * from tm_peminjaman";
             rss = stm.executeQuery(sql);
             while (rss.next()){
-                yasin.addRow(new Object[]{
+                perpus.addRow(new Object[]{
                     rss.getString(1),
                     rss.getString(2),
                     rss.getString(3),
@@ -171,7 +171,7 @@ public class Peminjaman extends javax.swing.JDialog {
                     rss.getString(8),
                     });
             }
-            tabelPeminjaman.setModel(yasin);
+            tabelPeminjaman.setModel(perpus);
         } catch (SQLException e) {
            JOptionPane.showMessageDialog(this,e);
            

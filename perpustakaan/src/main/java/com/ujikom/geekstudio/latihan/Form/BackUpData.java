@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  *
- * @author Yasin Dwi Ramandhita
+ *
  */
 public class BackUpData extends javax.swing.JDialog {
 

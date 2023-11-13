@@ -22,7 +22,7 @@ import javax.swing.JFileChooser;
 
 /**
  *
- * @author Yasin Dwi Ramandhita
+ * 
  */
 public class JumlahAnggota extends javax.swing.JDialog {
     private JFileChooser chooser = new JFileChooser();
@@ -94,27 +94,27 @@ public class JumlahAnggota extends javax.swing.JDialog {
     //
     //tampilData
     public void tampildata(){
-        DefaultTableModel yasin = new DefaultTableModel();
-        yasin.addColumn("Kode Anggota");
-        yasin.addColumn("Nama Anggota");
-        yasin.addColumn("Jenis Kelamin");
-        yasin.addColumn("Alamat Anggota");
-        yasin.addColumn("No Tlp/Hp");
-        yasin.addColumn("Foto Anggota");
+        DefaultTableModel perpus = new DefaultTableModel();
+        perpus.addColumn("Kode Anggota");
+        perpus.addColumn("Nama Anggota");
+        perpus.addColumn("Jenis Kelamin");
+        perpus.addColumn("Alamat Anggota");
+        perpus.addColumn("No Tlp/Hp");
+        perpus.addColumn("Foto Anggota");
         
         try {
             stm = koneksi.createStatement();
             String sql ="SELECT * FROM tm_anggota";
             rss = stm.executeQuery(sql);
             while (rss.next()){
-                yasin.addRow(new Object[]{
+                perpus.addRow(new Object[]{
                     rss.getString(1),
                     rss.getString(2),
                     rss.getString(3),
                     rss.getString(4),
                     rss.getString(5),});
             }
-            tabelAnggota.setModel(yasin);
+            tabelAnggota.setModel(perpus);
         } catch (SQLException e) {
            JOptionPane.showMessageDialog(this,e);
            

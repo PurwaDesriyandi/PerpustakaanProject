@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author Yasin Dwi Ramandhita
+ * 
  */
 public class TambahUser extends javax.swing.JDialog {
     Connection koneksi;
@@ -76,17 +76,14 @@ public class TambahUser extends javax.swing.JDialog {
        txtIdUser.setEnabled(false); 
        txtUser.setEnabled(true); 
        txtPass.setEnabled(true); 
-       cbHak.setEnabled(true);  
-       txtSts.setEnabled(true);  
+        
     }
     //
     //bersih
     public void Bersih(){
         txtIdUser.setText("");
-        cbHak.setSelectedIndex(0);
         txtUser.setText("");
         txtPass.setText("");
-        txtSts.setText("");
     }
     //
     //button hidup mati
@@ -126,13 +123,9 @@ public class TambahUser extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         txtIdUser = new javax.swing.JTextField();
         txtUser = new javax.swing.JTextField();
         txtPass = new javax.swing.JPasswordField();
-        cbHak = new javax.swing.JComboBox();
-        txtSts = new javax.swing.JTextField();
         btnTambah = new javax.swing.JButton();
         btnSimpan = new javax.swing.JButton();
         btnKeluar = new javax.swing.JButton();
@@ -153,14 +146,6 @@ public class TambahUser extends javax.swing.JDialog {
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password");
-
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Hak Akses");
-
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("User Sts");
-
-        cbHak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "...PILIH...", "admin", "petugas" }));
 
         btnTambah.setText("TAMBAH");
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -195,16 +180,12 @@ public class TambahUser extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(22, 22, 22)
+                            .addComponent(jLabel4))
+                        .addGap(23, 23, 23)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtIdUser)
+                            .addComponent(txtIdUser, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                             .addComponent(txtUser)
-                            .addComponent(txtPass)
-                            .addComponent(cbHak, 0, 160, Short.MAX_VALUE)
-                            .addComponent(txtSts))
+                            .addComponent(txtPass))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnTambah)
@@ -232,15 +213,7 @@ public class TambahUser extends javax.swing.JDialog {
                     .addComponent(jLabel4)
                     .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnKeluar))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(cbHak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtSts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -279,9 +252,7 @@ public class TambahUser extends javax.swing.JDialog {
         if (edit == false){
             SQL = "insert into tm_user values ('" + txtIdUser.getText() + "','"
                     + txtUser.getText() + "','"
-                    + txtPass.getText() + "','"
-                    + cbHak.getSelectedItem() + "','"
-                    + txtSts.getText() + "')";
+                    + txtPass.getText() + "','";
             stm.executeUpdate(SQL);
             JOptionPane.showMessageDialog(null, "Data dengan User Id " + txtIdUser.getText() + " Berhasil di Simpan !");
             
@@ -290,8 +261,6 @@ public class TambahUser extends javax.swing.JDialog {
                     + "userId='" + txtIdUser.getText() + "',"
                     + "userNama='" + txtUser.getText() + "',"
                     + "userPass='" + txtPass.getText() + "',"
-                    + "userHak='" + cbHak.getSelectedItem() + "',"
-                    + "userSts='" + txtSts.getText()+ "',"
                     + "where userId='" + txtIdUser.getText() + "'";
             stm.executeUpdate(SQL);
             JOptionPane.showMessageDialog(this, "Data dengan Kode Buku " + txtIdUser.getText() + " berhasil diperbaharui !");
@@ -365,17 +334,13 @@ public class TambahUser extends javax.swing.JDialog {
     private javax.swing.JButton btnKeluar;
     private javax.swing.JButton btnSimpan;
     private javax.swing.JButton btnTambah;
-    private javax.swing.JComboBox cbHak;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtIdUser;
     private javax.swing.JPasswordField txtPass;
-    private javax.swing.JTextField txtSts;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
