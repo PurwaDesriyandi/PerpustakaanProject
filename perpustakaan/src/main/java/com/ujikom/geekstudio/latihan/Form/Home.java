@@ -48,7 +48,7 @@ public class Home extends javax.swing.JFrame {
     //validasi
     public void validasi(){
         try {
-            String query = "SELECT userId, userHak FROM hak_akses";
+            String query = "SELECT userId";
             ResultSet resultSet = stm.executeQuery(query);
 
             if (resultSet.next()) {

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * 
+ * @author purwa
  */
 public class TambahUser extends javax.swing.JDialog {
     Connection koneksi;
@@ -40,7 +40,7 @@ public class TambahUser extends javax.swing.JDialog {
         }
     }
     //
-    //buatNoBuku
+    
     public void buatNoBuku(){
         try {
             stm = koneksi.createStatement();
@@ -145,6 +145,12 @@ public class TambahUser extends javax.swing.JDialog {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password");
 
+        txtUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserActionPerformed(evt);
+            }
+        });
+
         btnTambah.setText("TAMBAH");
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,9 +252,10 @@ public class TambahUser extends javax.swing.JDialog {
         // TODO add your handling code here:
         try {
         String SQL;
-        stm = koneksi.createStatement();
+        String password = new String(txtPass.getPassword());
+        Statement stm = koneksi.createStatement();
         if (edit == false){
-            SQL = "insert into tm_user values ('" + txtIdUser.getText() + "','"
+            SQL = "insert into tm_user values '" + txtIdUser.getText() + "','"
                     + txtUser.getText() + "','"
                     + txtPass.getText() + "','";
             stm.executeUpdate(SQL);
@@ -259,7 +266,7 @@ public class TambahUser extends javax.swing.JDialog {
                     + "userId='" + txtIdUser.getText() + "',"
                     + "userNama='" + txtUser.getText() + "',"
                     + "userPass='" + txtPass.getText() + "',"
-                    + "where userId='" + txtIdUser.getText() + "'";
+                    + "where userId='" + txtIdUser.getText() + ",";
             stm.executeUpdate(SQL);
             JOptionPane.showMessageDialog(this, "Data dengan Kode Buku " + txtIdUser.getText() + " berhasil diperbaharui !");
         }
@@ -285,6 +292,10 @@ public class TambahUser extends javax.swing.JDialog {
         this.dispose();}
         
     }//GEN-LAST:event_btnKeluarActionPerformed
+
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserActionPerformed
 
     /**
      * @param args the command line arguments

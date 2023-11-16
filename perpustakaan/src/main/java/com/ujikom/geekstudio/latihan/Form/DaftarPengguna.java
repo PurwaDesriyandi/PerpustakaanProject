@@ -47,13 +47,16 @@ public class DaftarPengguna extends javax.swing.JDialog {
     //tabel model
     private void tabelModel(JTable jTabel) {
         try {
-            Object[] field = {"No","User Id","Username","Hak Akses"};
+            Object[] field = {"No","User Id","Username"};
             DfltTblMode = new DefaultTableModel(null, field);
             jTabel.setModel(DfltTblMode);
             
-            String sql = "SELECT userId,userNama,userHak FROM tm_user";
-            Statement st = koneksi.createStatement();
-            ResultSet set = st.executeQuery(sql);
+            Connection connection = DriverManager.getConnection("dbc:mysql://localhost:3306/perpustakaan", "root", "");
+            String sql = "SELECT * FROM tm_user";
+            try(Statement st = connection.createStatement();
+                 ResultSet set = st.executeQuery(sql)){
+            
+            
 
             int no = 0;
             while (set.next()) {
@@ -75,6 +78,7 @@ public class DaftarPengguna extends javax.swing.JDialog {
             column.setPreferredWidth(170);
             
           }
+        }
           catch (SQLException e) {
               JOptionPane.showMessageDialog(this, "Koneksi gagal: " +e);
           }
