@@ -19,22 +19,23 @@ import javax.swing.JOptionPane;
  * 
  */
 public class AplikasiPerpustakaan {
-    public SettingUI config = new SettingUI(null, true);
     private String PROP_FILE="config.ini";
-    private Properties p2;
+    private Properties p2 = new Properties();
     public Home Start = new Home();
     public String vsNIK,Jabatan;
+
     
     public static void main(String[] args) {
         new Login().setVisible(true);
+        String userRole = "Admin"; 
+        new AplikasiPerpustakaan().HakAkses(userRole);
     }
     
     public void koneksiDatabase(){
-        config.setServer("localhost");
-        config.setUser("root");
-        config.setPassword("");
-        config.setDatabase("perpustakaan");
-        config.makeConnect();
+        String server = "localhost";
+        String user = "root";
+        String password ="";
+        String database ="perpustakaan";
     }
     public static Properties loadProperties(String sFile){
         Properties p = new Properties();
@@ -80,33 +81,50 @@ public class AplikasiPerpustakaan {
 	    JOptionPane.showMessageDialog(null, ex.getMessage());
 	}
   }
-    public void HakAkses(){
-      try{
-            Statement st = config.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select jabatan as JBTN from karyawan where NIK = '"+vsNIK+"'");
-            
-         if (rs.next()) {
-             Jabatan = rs.getString("JBTN");
-            if (Jabatan.equals("Admin")){
-//                 Start.jMnItmCTGRY.setVisible(false);
-//                 Start.jMnItmCabang.setVisible(false);
-//                 Start.jMnItmDept.setVisible(false);
-//                 Start.jMnItmKaryawan.setVisible(false);
-//                 Start.jMnItmSBS.setVisible(false);
-            }
-            else if (Jabatan.equals("Operator")){
-//                 Start.jMnMaster.setVisible(false);
-//                 Start.jMnTRN.setVisible(false);
-//                 Start.jMnPopulasi.setVisible(false);
-            }
-            else if (Jabatan.equals("User") || Jabatan.equals("User")){
-//                 Start.jMnMaster.setVisible(false);
-//                 Start.jMnPopulasi.setVisible(false);
-            }
+    public void HakAkses(String userRole){
+      try{ 
+            if (Jabatan.equals("Admin")) {
+                grantAdminAccess();
+            } else if (Jabatan.equals("Operator")) {
+                grantOperatorAccess();
+            } else if (Jabatan.equals("User")) {
+                grantUserAccess();
+            } else {
+                // Hak akses default jika peran tidak dikenali
+                grantDefaultAccess();
          }
-      }
-      catch (SQLException ex){
-          
-      }
+        } catch (Exception ex) {
+            // Handle exception
+            ex.printStackTrace();
+        }
+    }
+        private void grantAdminAccess() {
+        // Implementasi hak akses Admin
+        // Start.jMnItmCTGRY.setVisible(false);
+        // Start.jMnItmCabang.setVisible(false);
+        // Start.jMnItmDept.setVisible(false);
+        // Start.jMnItmKaryawan.setVisible(false);
+        // Start.jMnItmSBS.setVisible(false);
+    }
+
+    // Metode untuk memberikan hak akses Operator
+    private void grantOperatorAccess() {
+        // Implementasi hak akses Operator
+        // Start.jMnMaster.setVisible(false);
+        // Start.jMnTRN.setVisible(false);
+        // Start.jMnPopulasi.setVisible(false);
+    }
+
+    // Metode untuk memberikan hak akses User
+    private void grantUserAccess() {
+        // Implementasi hak akses User
+        // Start.jMnMaster.setVisible(false);
+        // Start.jMnPopulasi.setVisible(false);
+    }
+
+    // Metode untuk memberikan hak akses default
+    private void grantDefaultAccess() {
+       
+    }
   }
-}
+    

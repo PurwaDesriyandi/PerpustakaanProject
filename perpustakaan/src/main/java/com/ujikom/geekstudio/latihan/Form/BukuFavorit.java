@@ -5,6 +5,8 @@
  */
 package com.ujikom.geekstudio.latihan.Form;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,6 +32,7 @@ public class BukuFavorit extends javax.swing.JDialog {
         initComponents();
         aplikasiPerpus.koneksiDatabase();
         tampilDataKeTabel();
+        Connection koneksi;
     }
     //tabel model
     private void tabelModel(JTable jTabel) {
@@ -38,9 +41,11 @@ public class BukuFavorit extends javax.swing.JDialog {
             DfltTblMode = new DefaultTableModel(null, field);
             jTabel.setModel(DfltTblMode);
             
+            Connection connection = DriverManager.getConnection("dbc:mysql://localhost:3306/perpustakaan", "root", "");
             String sql = "SELECT * FROM bukupopuler";
-            Statement st = aplikasiPerpus.config.getConnection().createStatement();
-            ResultSet set = st.executeQuery(sql);
+            try(Statement st = connection.createStatement();
+                 ResultSet set = st.executeQuery(sql)){
+
 
             int no = 0;
             while (set.next()) {
@@ -62,7 +67,7 @@ public class BukuFavorit extends javax.swing.JDialog {
             column.setPreferredWidth(240);
             
           }
-          catch (SQLException e) {
+        } catch (SQLException e) {
               JOptionPane.showMessageDialog(this, "Koneksi gagal: " +e);
           }
     }
